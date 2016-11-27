@@ -1,6 +1,7 @@
 # GIActionSheet
 An ActionSheet component in iOS platform. Provide two styles (list / grid) for sheet's content region.
-![grid style](https://github.com/GYJEnjoy/GIActionSheet/blob/master/Docs/demo_grid_style.png)  ![list style](https://github.com/GYJEnjoy/GIActionSheet/blob/master/Docs/demo_list_style.png) 
+![grid style](/Docs/demo_grid_style.png) 
+![list style](/Docs/demo_list_style.png) 
 
 # Adding GIActionSheet to your project
 1. Copy /src foler to your project.
@@ -39,3 +40,25 @@ GIActionSheet *sheet = [[GIActionSheet alloc] initWithStyle:GIActionSheetStyleGr
                       }]];
     [sheet show];
 ``` 
+
+# More
+Using these property in GIAction to define ui style.
+``` objective-c
+@property (nonatomic, assign) BOOL enabled;
+@property (nonatomic, strong, nullable) UIColor *normalTitleColor;
+@property (nonatomic, strong, nullable) UIColor *disableTitleColor;
+@property (nonatomic, strong, nullable) UIFont *titleFont;
+```
+
+----
+Hide cancel btn if **GIActionSheet.cancelable** is set to NO.
+You can also change actions when ActionSheet is already shown, using statements below:
+``` objective-c
+- (BOOL)addAction:(GIAction * _Nonnull)action;
+- (BOOL)addAction:(GIAction * _Nonnull)action atIndex:(NSUInteger)index;
+- (BOOL)setAction:(GIAction * _Nonnull)action atIndex:(NSUInteger)index;
+- (GIAction * _Nonnull)removeActionAtIndex:(NSUInteger)index;
+- (NSUInteger)removeAction:(GIAction * _Nonnull)action;
+```
+Other features please see GIActionSheet.h and GIAction.h .
+
