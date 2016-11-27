@@ -27,7 +27,7 @@
     sheet.cancelable = YES;
     sheet.cancelTitle = @"Choose Later";
     sheet.dismissWhenTapOutside = YES;
-    sheet.actions = @[[GIAction actionWithTitle:@"Option 1. Dismiss when clicked." icon:[UIImage imageNamed:@"icon_share_platform_qq_friend"] action:^(BOOL * _Nonnull dismiss) {
+    sheet.actions = @[[GIAction actionWithTitle:@"Option 1. Dismiss when clicked." icon:nil/*[UIImage imageNamed:@"icon_share_platform_qq_friend"]*/ action:^(BOOL * _Nonnull dismiss) {
                       }],
                       [GIAction actionWithTitle:@"Option 2. Does not dismiss when clicked." action:^(BOOL * _Nonnull dismiss) {
                               *dismiss = NO;
