@@ -1,7 +1,7 @@
 # GIActionSheet
 An ActionSheet component in iOS platform. Provide two styles (list / grid) for sheet's content region.
-![grid style](https://github.com/GYJEnjoy/GIActionSheet/Docs/demo_grid_style.png) 
-![list style](https://github.com/GYJEnjoy/GIActionSheet/Docs/demo_list_style.png) 
+![grid style](https://github.com/GYJEnjoy/GIActionSheet/blob/master/Docs/demo_grid_style.png) 
+![list style](https://github.com/GYJEnjoy/GIActionSheet/blob/master/Docs/demo_list_style.png) 
 
 # Adding GIActionSheet to your project
 1. Copy /src foler to your project.
