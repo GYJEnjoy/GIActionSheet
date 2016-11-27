@@ -78,6 +78,88 @@
     return [self initWithStyle:GIActionSheetStyleList];
 }
 
+/**
+ * 提供简单方式显示组件
+ * @param title 标题
+ * @param style 样式
+ * @param actions 选项
+ * @param cancelable 是否可取消
+ * @return 实例
+ */
++ (nullable instancetype)showWithtitle:(nullable NSString *)title
+                                 style:(GIActionSheetStyle)style
+                               actions:(nonnull NSArray <GIAction *> *)actions
+                            cancelable:(BOOL)cancelable {
+    if (actions.count == 0) {
+        return nil;
+    }
+    
+    GIActionSheet *sheet = [[GIActionSheet alloc] initWithStyle:style];
+    sheet.title = title;
+    sheet.cancelable = cancelable;
+    sheet.actions = actions;
+    [sheet show];
+    return sheet;
+}
+
+/**
+ * 提供简单方式显示组件(List模式)
+ * @param title 标题
+ * @param actionTitles 选项标题
+ * @param cancelable 是否可取消
+ * @param onClick 点击了选项
+ * @return 实例
+ */
++ (nullable instancetype)showAsListWithtitle:(nullable NSString *)title
+                                actionTitles:(nonnull NSArray <NSString *> *)actionTitles
+                                  cancelable:(BOOL)cancelable
+                                     onClick:(void (^ __nonnull)(NSUInteger index))onClick {
+    if (actionTitles.count == 0) {
+        return nil;
+    }
+    
+    NSMutableArray *actions = [NSMutableArray arrayWithCapacity:actionTitles.count];
+    [actionTitles enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [actions addObject:[GIAction actionWithTitle:obj action:^(BOOL * _Nonnull dismiss) {
+            if (onClick) {
+                onClick(idx);
+            }
+        }]];
+    }];
+
+    return [self showWithtitle:title style:GIActionSheetStyleList actions:actions cancelable:cancelable];
+}
+
+/**
+ * 提供简单方式显示组件(Grid模式)
+ * @param title 标题
+ * @param actionTitles 选项标题
+ * @param actionIcons 选项图标，数量必须与actionTitles一致
+ * @param cancelable 是否可取消
+ * @param onClick 点击了选项
+ * @return 实例
+ */
++ (nullable instancetype)showAsGridWithtitle:(nullable NSString *)title
+                                actionTitles:(nonnull NSArray <NSString *> *)actionTitles
+                                 actionIcons:(nonnull NSArray <UIImage *> *)actionIcons
+                                  cancelable:(BOOL)cancelable
+                                     onClick:(void (^ __nonnull)(NSUInteger index))onClick {
+    if (actionTitles.count == 0 || actionTitles.count != actionIcons.count) {
+        return nil;
+    }
+    
+    NSMutableArray *actions = [NSMutableArray arrayWithCapacity:actionTitles.count];
+    [actionTitles enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [actions addObject:[GIAction actionWithTitle:obj icon:actionIcons[idx] action:^(BOOL * _Nonnull dismiss) {
+            if (onClick) {
+                onClick(idx);
+            }
+        }]];
+    }];
+    
+    return [self showWithtitle:title style:GIActionSheetStyleGrid actions:actions cancelable:cancelable];
+}
+
 #pragma mark - 视图显示与更新
 /**
  * 显示

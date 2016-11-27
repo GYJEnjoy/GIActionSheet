@@ -33,6 +33,12 @@
                               *dismiss = NO;
                       }]];
     [sheet show];
+//    [GIActionSheet showAsListWithtitle:@"ActionSheet - List mode"
+//                          actionTitles:@[@"Option 1.",@"Option 2.",@"Option 3.",@"Option 4."]
+//                            cancelable:NO
+//                               onClick:^(NSUInteger index) {
+//        
+//    }];
 }
 
 - (IBAction)showActionSheetAsGrid:(id)sender {
@@ -52,6 +58,14 @@
                       [GIAction actionWithTitle:@"Opt 5" icon:[UIImage imageNamed:@"icon_share_platform_weibo"] action:^(BOOL * _Nonnull dismiss) {
                       }]];
     [sheet show];
+    
+//    [GIActionSheet showAsGridWithtitle:@"ActionSheet - Grid mode"
+//                          actionTitles:@[@"Opt 1",@"Opt 2",@"Opt 3",@"Opt 4"]
+//                           actionIcons:@[[UIImage imageNamed:@"icon_share_platform_qq_friend"],[UIImage imageNamed:@"icon_share_platform_qq_zone"],[UIImage imageNamed:@"icon_share_platform_wechat_friend"],[UIImage imageNamed:@"icon_share_platform_wechat_timeline"]]
+//                            cancelable:YES
+//                               onClick:^(NSUInteger index) {
+//        
+//    }];
 }
 
 

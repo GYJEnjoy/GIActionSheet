@@ -10,10 +10,10 @@
 #define GIDefine_h
 
 /// 显示样式
-typedef enum GIActionSheetStyle {
+typedef NS_ENUM(NSInteger, GIActionSheetStyle)  {
     GIActionSheetStyleList = 1, // 列表
     GIActionSheetStyleGrid // 九宫格样式
-} GIActionSheetStyle;
+};
 
 /// List - 行高
 #define LIST_CELL_HEIGHT                (50.f)

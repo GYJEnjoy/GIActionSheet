@@ -51,6 +51,46 @@ typedef void (^GIOnDismissed)();
 - (nonnull instancetype)initWithStyle:(GIActionSheetStyle)style NS_DESIGNATED_INITIALIZER;
 
 /**
+ * 提供简单方式显示组件
+ * @param title 标题
+ * @param style 样式
+ * @param actions 选项
+ * @param cancelable 是否可取消
+ * @return 实例
+ */
++ (nullable instancetype)showWithtitle:(nullable NSString *)title
+                                 style:(GIActionSheetStyle)style
+                               actions:(nonnull NSArray <GIAction *> *)actions
+                            cancelable:(BOOL)cancelable;
+/**
+ * 提供简单方式显示组件(List模式)
+ * @param title 标题
+ * @param actionTitles 选项标题
+ * @param cancelable 是否可取消
+ * @param onClick 点击了选项
+ * @return 实例
+ */
++ (nullable instancetype)showAsListWithtitle:(nullable NSString *)title
+                                actionTitles:(nonnull NSArray <NSString *> *)actionTitles
+                                  cancelable:(BOOL)cancelable
+                                     onClick:(void (^ __nonnull)(NSUInteger index))onClick;
+
+/**
+ * 提供简单方式显示组件(Grid模式)
+ * @param title 标题
+ * @param actionTitles 选项标题
+ * @param actionIcons 选项图标，数量必须与actionTitles一致
+ * @param cancelable 是否可取消
+ * @param onClick 点击了选项
+ * @return 实例
+ */
++ (nullable instancetype)showAsGridWithtitle:(nullable NSString *)title
+                                actionTitles:(nonnull NSArray <NSString *> *)actionTitles
+                                actionIcons:(nonnull NSArray <UIImage *> *)actionIcons
+                                  cancelable:(BOOL)cancelable
+                                     onClick:(void (^ __nonnull)(NSUInteger index))onClick;
+
+/**
  * 显示
  * @param onCompleted 显示完成后执行
  */
